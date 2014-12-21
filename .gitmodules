@@ -1,0 +1,4 @@
+[submodule "Crash/Vendor/Realm"]
+	path = Crash/Vendor/Realm
+	url = https://github.com/realm/realm-cocoa.git
+	branch = master
