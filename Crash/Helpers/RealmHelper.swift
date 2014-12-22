@@ -14,5 +14,14 @@ class RealmHelper {
 		RLMRealm.setSchemaVersion(0, withMigrationBlock: { (migration, oldSchemaVersion) -> Void in
 			// Do nothing
 		})
+		
+		// Create the realm if it isn't already there
+		RLMRealm.defaultRealm()
+		
+		// Disable data protection
+		var error: NSError?
+		if !NSFileManager.defaultManager().setAttributes([NSFileProtectionKey: NSFileProtectionCompleteUntilFirstUserAuthentication], ofItemAtPath: RLMRealm.defaultRealmPath(), error: &error) {
+			NSLog("Error disabling data protection on realm: \(error)")
+		}
 	}
 }
